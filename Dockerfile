@@ -5,6 +5,8 @@ WORKDIR /
 # Copier l'ensemble du code source dans l'image
 COPY . .
 
+RUN ls -la
+
 # Rendre le wrapper Gradle exécutable et compiler le projet
 RUN chmod +x gradlew && ./gradlew clean build --no-daemon
 
