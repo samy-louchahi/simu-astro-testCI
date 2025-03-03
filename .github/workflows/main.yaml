@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Étape de build de l'application Quarkus
+      # Étape de build : on génère l'image fast-jar de Quarkus
       - name: Build Quarkus Application
         run: ./gradlew clean build -Dquarkus.package.type=fast-jar
 
@@ -24,9 +24,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Utilisation du Dockerfile.jvm qui s'appuie sur le contenu généré par Quarkus
+      # Utilisation du Dockerfile.jvm de Quarkus situé dans src/main/docker
       - name: Build Docker image using Dockerfile.jvm
-        run: docker build -f Dockerfile.jvm -t alexischartier/back-testci:latest .
+        run: |
+          docker build -f src/main/docker/Dockerfile.jvm -t ${{ secrets.DOCKER_USERNAME }}/simu-astro-testci:latest .
 
       - name: Push Docker image
-        run: docker push alexischartier/back-testci:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/simu-astro-testci:latest
