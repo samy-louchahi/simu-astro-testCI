@@ -13,14 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Decode and save ca.pem file
-        run: |
-          echo "${{ secrets.CA_PEM }}" > ca.pem
-
-      - name: Decode and save .env file
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
