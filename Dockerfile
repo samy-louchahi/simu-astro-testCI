@@ -5,6 +5,11 @@ WORKDIR /usr/src/app
 # Copier l'ensemble du code source dans l'image
 COPY . .
 
+# Diagnostic : lister le contenu du répertoire de travail pour vérifier la présence des fichiers du projet
+RUN echo "Contenu de /usr/src/app :" && ls -la /usr/src/app
+
+# Rendre le wrapper Gradle exécutable et compiler le projet
+RUN chmod +x gradlew && ./gradlew clean build --no-daemon
 RUN ls -la
 
 # Rendre le wrapper Gradle exécutable et compiler le projet
