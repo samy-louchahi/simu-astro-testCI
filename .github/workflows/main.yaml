@@ -30,8 +30,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t alexischartier/back-testCI:latest .
+          docker build -t alexischartier/back-testci:latest .
 
       - name: Push Docker image
         run: |
-          docker push alexischartier/back-testCI:latest
+          docker push alexischartier/back-testci:latest
