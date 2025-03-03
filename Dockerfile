@@ -1,6 +1,6 @@
 # Étape de build : Compilation de l'application avec Gradle
 FROM openjdk:21-slim AS builder
-WORKDIR /usr/src/app
+WORKDIR /
 
 # Copier l'ensemble du code source dans l'image
 COPY . .
