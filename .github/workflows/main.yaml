@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker image using Dockerfile.jvm
         run: |
-          docker build -f Dockerfile.jvm -t alexischartier/simu-astro-testci:latest .
+          docker build -f src/main/docker/Dockerfile.jvm -t alexischartier/simu-astro-testci:latest .
 
       - name: Push Docker image
         run: |
